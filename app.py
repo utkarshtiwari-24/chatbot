@@ -21,10 +21,6 @@ from llama_index import SimpleDirectoryReader
 openai.api_key = st.secrets.openai_key
 st.header("Modelwise Customer Support 💬 📚")
 
-st.set_page_config(page_title="Modelwise Customer Support", page_icon="M", layout="centered", initial_sidebar_state="auto", menu_items=None)
-openai.api_key = st.secrets.openai_key
-st.title("Chat with the Streamlit docs, powered by LlamaIndex 💬🦙")
-
 if "messages" not in st.session_state.keys(): # Initialize the chat message history
     st.session_state.messages = [
         {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
