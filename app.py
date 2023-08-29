@@ -23,7 +23,7 @@ st.header("Modelwise Customer Support 💬 📚")
 
 if "messages" not in st.session_state.keys(): # Initialize the chat message history
     st.session_state.messages = [
-        {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
+        {"role": "assistant", "content": "I am Modelwise Chat Assistant, Chaze! How may I help you?"}
     ]
 
 @st.cache_resource(show_spinner=False)
@@ -31,7 +31,7 @@ def load_data():
     with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
         reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
         docs = reader.load_data()
-        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, system_prompt="You are an expert on the Streamlit Python library and your job is to answer technical questions. Assume that all questions are related to the Streamlit Python library. Keep your answers technical and based on facts – do not hallucinate features."))
+        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.5, system_prompt="You are a customer support expert for the company Modelwise. Assume that all questions are related to Modelwise. Keep your answers based on facts and do not hallucinate features. Be polite while answering the questions.If you don't know the answer to any question, forward the email id of Arnold to user and request to contact him."))
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
         return index
 
