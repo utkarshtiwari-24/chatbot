@@ -31,7 +31,7 @@ def load_data():
     with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
         reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
         docs = reader.load_data()
-        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.2, system_prompt="You are an AI assistant for the supporting the customers of the company named Modelwise. If you don't know the answer to any question, just say you don't the answer. Don't hallucinate any answers."))
+        service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-3.5-turbo", temperature=0.2, system_prompt="A potential customer has called in to inquire about our company Modelwise and its product Paitron and its capabilities. How would you handle the call as a trained and persuasive customer service agent? You need to try and convert the caller. "))
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
         return index
 
